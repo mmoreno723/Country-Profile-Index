@@ -11,11 +11,16 @@
     <header>
       <div class="header">
         <h1>Country Profile Index</h1>
-        <h3>Dark Mode</h3>
+        <button onclick="darkMode()" type="button" id="darkModeBtn">
+          <h3>Dark Mode</h3>
+        </button>
       </div>
     </header>
     <div id="inputBar">
-      <input type="text" placeholder="Search for a country" />
+      <form>
+        <input type="text" id="searchBar" placeholder="Find a country" />
+      </form>
+      <button type="button" id="searchBtn">Search</button>
     </div>
     <script src="script.js"></script>
   </body>

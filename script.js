@@ -1,3 +1,8 @@
+function darkMode() {
+  var element = document.body;
+  element.className = "dark-mode";
+}
+
 function getCountryApi() {
   var requestUrl = "https://restcountries.com/v3.1/name/peru";
 
