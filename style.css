@@ -5,12 +5,24 @@
   margin-left: 25px;
 }
 
-#darkModeBtn {
+.headerBtns {
+  display: flex;
+  margin-top: 10px;
+  gap: 10px;
+}
+
+#darkModeBtn,
+#lightModeBtn {
   height: fit-content;
 }
 
+.light-mode {
+  background-color: white;
+  color: black;
+}
+
 .dark-mode {
-  background-color: black;
+  background-color: #121212;
   color: white;
 }
 
