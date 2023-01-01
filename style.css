@@ -1,0 +1,12 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin-right: 50px;
+  margin-left: 25px;
+}
+
+#inputBar {
+  border: none;
+  margin-left: 25px;
+  font-size: 17px;
+}
