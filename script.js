@@ -8,11 +8,6 @@ function lightMode() {
   element.className = "light-mode";
 }
 
-// var card = document.createElement("div");
-
-// var countryName = document.createElement("p")
-// countryName.textContent =
-
 function getAllCountries() {
   var requestUrl = "https://restcountries.com/v3.1/all";
 
@@ -21,20 +16,34 @@ function getAllCountries() {
       return response.json();
     })
     .then(function (data) {
-      console.log(data);
+      // console.log(data);
+
       for (let i = 0; i < data.length; i++) {
-        var name = data[i].name.common;
+        let name = data[i].name.common;
         var continent = data[i].continents;
         var currency = data[i].currencies;
         var demonym = data[i].demonyms;
         var language = data[i].languages;
         var population = data[i].population;
-        console.log(name);
-        console.log(population);
-        // var countryCapital = data[i].capital[0];
-        // console.log(countryCapital);
+        // console.log(name);
       }
+      profiles = data;
+      renderDatatoPage();
     });
+}
+
+function renderDatatoPage() {
+  for (let i = 0; i < profiles.length; i++) {
+    var card = document.createElement("div");
+    var title = document.createElement("p");
+    title.textContent = profiles[i].name.common;
+
+    card.appendChild(title);
+
+    document.body.appendChild(card);
+
+    console.log(title);
+  }
 }
 
 getAllCountries();
