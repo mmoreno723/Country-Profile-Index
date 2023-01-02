@@ -10,18 +10,35 @@ function lightMode() {
   element.className = "light-mode";
 }
 
+let topButton = document.getElementById("topBtn");
+window.onscroll = function () {
+  scrollFunction();
+};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    topButton.style.display = "block";
+  } else {
+    topButton.style.display = "none";
+  }
+}
+
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+
 function getAllCountries() {
-  var requestUrl = "https://restcountries.com/v3.1/all";
+  var requestUrl = "https://restcountries.com/v2/all";
 
   fetch(requestUrl)
     .then(function (response) {
       return response.json();
     })
     .then(function (data) {
-      console.log(data);
+      // console.log(data);
 
       for (let i = 0; i < data.length; i++) {
-        var continent = data[i].continents;
         var currency = data[i].currencies;
         var demonym = data[i].demonyms;
         var language = data[i].languages;
@@ -39,11 +56,11 @@ function renderDatatoPage() {
     card.setAttribute("class", "card");
     var title = document.createElement("p");
     title.setAttribute("id", "cardTitle");
-    title.textContent = profiles[i].name.common;
+    title.textContent = profiles[i].name;
 
-    let continent = document.createElement("p");
-    continent.setAttribute("id", "cardContinent");
-    continent.textContent = "Continent: " + profiles[i].continents;
+    // let continent = document.createElement("p");
+    // continent.setAttribute("id", "cardContinent");
+    // continent.textContent = "Continent: " + profiles[i].continents;
 
     if (profiles[i].flags !== undefined || profiles[i].flags != null) {
       var cardFlag = document.createElement("img");
@@ -54,20 +71,17 @@ function renderDatatoPage() {
       card.appendChild(cardFlag);
     }
 
-    if (profiles[i].capital !== undefined || profiles[i].capital !== null) {
-      var capital = document.createElement("p");
-      capital.setAttribute("id", "cardCapital");
-      capital.textContent = "Capital: " + profiles[i].capital;
-    } else if (
-      profiles[i].capital === undefined ||
-      profiles[i].capital === null
-    ) {
-      capital.textContent = "Capital: N/A";
-    }
+    // if (profiles[i].capital !== undefined || profiles[i].capital !== null) {
+    //   var capital = document.createElement("p");
+    //   capital.setAttribute("id", "cardCapital");
+    //   capital.textContent = "Capital: " + profiles[i].capital;
+    // } else if (profiles[i].capital === undefined) {
+    //   capital.textContent = "Capital: N/A";
+    // }
 
     card.appendChild(title);
-    card.appendChild(capital);
-    card.appendChild(continent);
+    // card.appendChild(capital);
+    // card.appendChild(continent);
     document.body.appendChild(card);
     container.appendChild(card);
   }
@@ -76,7 +90,7 @@ function renderDatatoPage() {
 getAllCountries();
 
 // function getACountry() {
-//   var requestUrl = "https://restcountries.com/v3.1/name/brasil";
+//   var requestUrl = "https://restcountries.com/v2/all";
 
 //   fetch(requestUrl)
 //     .then(function (response) {
