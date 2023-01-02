@@ -31,3 +31,20 @@
   margin-left: 25px;
   font-size: 17px;
 }
+
+#container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding-top: 30px;
+}
+
+.card {
+  flex: 1 0 200px;
+  border: solid black 2px;
+  text-align: center;
+}
+
+/* #cardFlagImg {
+  width: 100%;
+} */

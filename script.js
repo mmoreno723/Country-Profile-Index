@@ -1,3 +1,5 @@
+var container = document.querySelector("#container");
+
 function darkMode() {
   var element = document.body;
   element.className = "dark-mode";
@@ -16,7 +18,7 @@ function getAllCountries() {
       return response.json();
     })
     .then(function (data) {
-      // console.log(data);
+      console.log(data);
 
       for (let i = 0; i < data.length; i++) {
         let name = data[i].name.common;
@@ -35,14 +37,22 @@ function getAllCountries() {
 function renderDatatoPage() {
   for (let i = 0; i < profiles.length; i++) {
     var card = document.createElement("div");
+    card.setAttribute("class", "card");
     var title = document.createElement("p");
     title.textContent = profiles[i].name.common;
 
     card.appendChild(title);
-
     document.body.appendChild(card);
+    container.appendChild(card);
 
-    console.log(title);
+    if (profiles[i].flags !== undefined || profiles[i].flags != null) {
+      var cardFlag = document.createElement("img");
+      cardFlag.setAttribute("src", profiles[i].flags.png);
+      cardFlag.setAttribute("onerror", "this.onerror=null; this.src=''");
+      cardFlag.setAttribute("id", "cardFlagImg");
+
+      card.appendChild(cardFlag);
+    }
   }
 }
 
