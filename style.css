@@ -1,3 +1,7 @@
+body {
+  font-family: "Manrope", sans-serif;
+}
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -34,7 +38,7 @@
 
 #container {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   flex-wrap: wrap;
   padding-top: 30px;
 }
@@ -43,8 +47,14 @@
   flex: 1 0 200px;
   border: solid black 2px;
   text-align: center;
+  padding: 5px;
 }
 
-/* #cardFlagImg {
+#cardTitle {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#cardFlagImg {
   width: 100%;
-} */
+}

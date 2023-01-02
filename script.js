@@ -21,7 +21,6 @@ function getAllCountries() {
       console.log(data);
 
       for (let i = 0; i < data.length; i++) {
-        let name = data[i].name.common;
         var continent = data[i].continents;
         var currency = data[i].currencies;
         var demonym = data[i].demonyms;
@@ -39,11 +38,12 @@ function renderDatatoPage() {
     var card = document.createElement("div");
     card.setAttribute("class", "card");
     var title = document.createElement("p");
+    title.setAttribute("id", "cardTitle");
     title.textContent = profiles[i].name.common;
 
-    card.appendChild(title);
-    document.body.appendChild(card);
-    container.appendChild(card);
+    let continent = document.createElement("p");
+    continent.setAttribute("id", "cardContinent");
+    continent.textContent = "Continent: " + profiles[i].continents;
 
     if (profiles[i].flags !== undefined || profiles[i].flags != null) {
       var cardFlag = document.createElement("img");
@@ -53,6 +53,23 @@ function renderDatatoPage() {
 
       card.appendChild(cardFlag);
     }
+
+    if (profiles[i].capital !== undefined || profiles[i].capital !== null) {
+      var capital = document.createElement("p");
+      capital.setAttribute("id", "cardCapital");
+      capital.textContent = "Capital: " + profiles[i].capital;
+    } else if (
+      profiles[i].capital === undefined ||
+      profiles[i].capital === null
+    ) {
+      capital.textContent = "Capital: N/A";
+    }
+
+    card.appendChild(title);
+    card.appendChild(capital);
+    card.appendChild(continent);
+    document.body.appendChild(card);
+    container.appendChild(card);
   }
 }
 
