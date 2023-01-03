@@ -32,8 +32,14 @@
       </div>
     </header>
     <div id="inputBar">
-      <form>
-        <input type="text" id="searchBar" placeholder="Find a country" />
+      <!-- <p id="result">Hello World</p> -->
+      <form id="submitForm">
+        <input
+          type="text"
+          id="searchBar"
+          placeholder="Find a country"
+          name="searcBar"
+        />
         <button type="submit" id="searchBtn">
           <i class="fa-solid fa-magnifying-glass"></i>
         </button>
@@ -44,5 +50,6 @@
       Go To Top
     </button>
     <script src="script.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   </body>
 </html>
