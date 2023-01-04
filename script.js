@@ -1,6 +1,21 @@
 var container = document.querySelector("#container");
-var cardContainer = document.querySelector("#countryCardInfo");
+var searchButton = document.querySelector("#searchBtn");
+var searchInput = document.querySelector("#searchBar");
+var userFormEl = document.querySelector("#submitForm");
+var countryCardContainer = document.querySelector("#cardInfo");
+var closeBtn = document.getElementsByClassName("close");
 
+function displayCountryCard() {
+  countryCardContainer.style.display = "block";
+}
+
+var j;
+
+for (j = 0; j < closeBtn.length; j++) {
+  closeBtn[j].addEventListener("click", function () {
+    this.parentElement.style.display = "none";
+  });
+}
 // DARK AND LIGHT MODE //
 
 function darkMode() {
@@ -44,7 +59,7 @@ function getAllCountries() {
     })
     .then(function (data) {
       for (let i = 0; i < data.length; i++) {}
-      profiles = data;
+      allCountries = data;
       renderAllCountriestoPage();
     });
 }
@@ -52,17 +67,17 @@ function getAllCountries() {
 getAllCountries();
 
 function renderAllCountriestoPage() {
-  for (let i = 0; i < profiles.length; i++) {
+  for (let i = 0; i < allCountries.length; i++) {
     var card = document.createElement("div");
     card.setAttribute("class", "card");
     card.setAttribute("onclick", "location.href='#'");
     var title = document.createElement("p");
     title.setAttribute("id", "cardTitle");
-    title.textContent = profiles[i].name;
+    title.textContent = allCountries[i].name;
 
-    if (profiles[i].flags !== undefined || profiles[i].flags != null) {
+    if (allCountries[i].flags !== undefined || allCountries[i].flags != null) {
       var cardFlag = document.createElement("img");
-      cardFlag.setAttribute("src", profiles[i].flags.png);
+      cardFlag.setAttribute("src", allCountries[i].flags.png);
       cardFlag.setAttribute("onerror", "this.onerror=null; this.src=''");
       cardFlag.setAttribute("id", "cardFlagImg");
 
@@ -75,10 +90,6 @@ function renderAllCountriestoPage() {
   }
 }
 
-var searchButton = document.querySelector("#searchBtn");
-var searchInput = document.querySelector("#searchBar");
-var userFormEl = document.querySelector("#submitForm");
-
 var formSubmitHandler = function (event) {
   event.preventDefault();
 };
@@ -90,7 +101,7 @@ var buttonClickHandler = function (event) {
 
   if (countryInput) {
     getInputCountry(countryInput);
-    cardContainer.textContent = "";
+    // inputCardContainer.textContent = "";
 
     searchInput.value = "";
   } else {
@@ -108,36 +119,9 @@ var getInputCountry = function (countryInput) {
     .then(function (data) {
       for (let i = 0; i < data.length; i++) {}
       search = data;
-      renderInputCountrytoPage();
+      displayCountryCard();
     });
 };
-//       if (response.ok) {
-//         response.json().then(function (data) {
-//           console.log(data);
-//           inputCountry = data;
-//         });
-//       } else {
-//         alert("Error: " + response.statusText);
-//       }
-//     })
-//     .catch(function (error) {
-//       alert("Unable to connect to REST Countries");
-//     });
-// };
-
-function renderInputCountrytoPage() {
-  for (let i = 0; i < search.length; i++) {
-    var countryCard = document.createElement("div");
-    countryCard.setAttribute("id", "countryCard");
-    var text = document.createElement("p");
-    text.setAttribute("id", "countryText");
-    text.textContent = search[i].name;
-
-    countryCard.appendChild(text);
-    cardContainer.appendChild(countryCard);
-    // console.log(countryCard);
-  }
-}
 
 userFormEl.addEventListener("submit", formSubmitHandler);
 searchButton.addEventListener("click", buttonClickHandler);
