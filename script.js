@@ -1,4 +1,5 @@
 var container = document.querySelector("#container");
+var cardContainer = document.querySelector("#countryCardInfo");
 
 // DARK AND LIGHT MODE //
 
@@ -89,6 +90,7 @@ var buttonClickHandler = function (event) {
 
   if (countryInput) {
     getInputCountry(countryInput);
+    cardContainer.textContent = "";
 
     searchInput.value = "";
   } else {
@@ -126,17 +128,14 @@ var getInputCountry = function (countryInput) {
 function renderInputCountrytoPage() {
   for (let i = 0; i < search.length; i++) {
     var countryCard = document.createElement("div");
-    countryCard.setAttribute("class", "countryCard");
+    countryCard.setAttribute("id", "countryCard");
     var text = document.createElement("p");
-
-    text.setAttribute("class", "countryText");
-
-    countryCard.appendChild(text);
-    container.appendChild(countryCard);
-    text.textContent = "";
+    text.setAttribute("id", "countryText");
     text.textContent = search[i].name;
 
-    console.log(text);
+    countryCard.appendChild(text);
+    cardContainer.appendChild(countryCard);
+    // console.log(countryCard);
   }
 }
 
