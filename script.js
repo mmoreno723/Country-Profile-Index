@@ -136,7 +136,8 @@ function displayInputCountryInfo() {
     inputCountryTitle.textContent = search[i].name;
     inputCountryCapital.textContent = "Capital: " + search[i].capital;
     inputCountrySubregion.textContent = "Subregion: " + search[i].subregion;
-    inputCountryPopulation.textContent = "Population: " + search[i].population;
+    inputCountryPopulation.textContent =
+      "Population: " + search[i].population.toLocaleString();
     inputCountryDemonym.textContent = "Demonym: " + search[i].demonym;
   }
 }

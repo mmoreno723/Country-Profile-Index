@@ -96,19 +96,16 @@ button {
   font-size: 18px;
 }
 
-#closeBtn {
-  height: 20px;
-}
-
 #countryName {
   text-align: center;
 }
 
 #cardInfo {
   display: none;
-  width: 50%;
-  top: 25%;
-  left: 30%;
+  width: 30%;
+  margin: auto;
+  top: 15%;
+  left: 35%;
   border: solid black 3px;
   border-radius: 10px;
   position: fixed;
@@ -119,25 +116,27 @@ button {
 #cardInfoTitle {
   margin-top: 10px;
   font-size: 25px;
+  margin-left: 15px;
 }
 
 #displayFlag {
-  position: absolute;
-  padding-top: 10px;
-  padding-right: 10px;
-  right: 0%;
-  width: 400px;
-  max-height: 100%;
+  max-width: 94%;
+  border-radius: 20px;
+  padding-top: 5px;
+  padding-left: 12px;
 }
 
-#cardInfo p {
-  margin-left: 15px;
+#displayTextContainer {
+  margin-top: -20px;
+  display: flex;
+  justify-content: space-around;
 }
 
 .close {
   cursor: pointer;
-  position: fixed;
-  top: 25%;
-  right: 2%;
+  position: absolute;
+  top: 60%;
+  right: 4%;
   transform: translate(0%, -50%);
+  font-size: 20px;
 }
