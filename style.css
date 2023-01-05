@@ -29,7 +29,7 @@ body {
 }
 
 .card:hover {
-  box-shadow: 0px 0px 10px 2px rgba(125, 219, 216, 0.75);
+  box-shadow: 0px 0px 10px 2px rgb(0 0 0 / 0.2);
 }
 
 .dark-mode {
@@ -96,16 +96,6 @@ button {
   font-size: 18px;
 }
 
-#countryCard {
-  position: fixed;
-  z-index: 99;
-  border: solid blue 3px;
-  background-color: #c0c8d0;
-  border-radius: 10px;
-  margin-left: 350px;
-  width: 50%;
-}
-
 #closeBtn {
   height: 20px;
 }
@@ -118,24 +108,36 @@ button {
   display: none;
   width: 50%;
   top: 25%;
-  left: 25%;
-  /* text-align: center; */
-  border: solid blue 2px;
+  left: 30%;
+  border: solid black 3px;
+  border-radius: 10px;
   position: fixed;
   z-index: 99;
-  background-color: #c0c8d0;
+  background-color: white;
+}
+
+#cardInfoTitle {
+  margin-top: 10px;
+  font-size: 25px;
+}
+
+#displayFlag {
+  position: absolute;
+  padding-top: 10px;
+  padding-right: 10px;
+  right: 0%;
+  width: 400px;
+  max-height: 100%;
+}
+
+#cardInfo p {
+  margin-left: 15px;
 }
 
 .close {
   cursor: pointer;
-  position: absolute;
-  top: 50%;
-  right: 0%;
-  padding: 12px 16px;
+  position: fixed;
+  top: 25%;
+  right: 2%;
   transform: translate(0%, -50%);
 }
-
-/* .close:hover {
-  background: #bbb;
-  border: solid 2px black;
-} */

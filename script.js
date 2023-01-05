@@ -4,6 +4,12 @@ var searchInput = document.querySelector("#searchBar");
 var userFormEl = document.querySelector("#submitForm");
 var countryCardContainer = document.querySelector("#cardInfo");
 var closeBtn = document.getElementsByClassName("close");
+var inputCountryTitle = document.querySelector("#cardInfoTitle");
+var inputCountryCapital = document.querySelector("#displayCapital");
+var inputCountryPopulation = document.querySelector("#displayPop");
+var inputCountrySubregion = document.querySelector("#displaySubregion");
+var inputCountryDemonym = document.querySelector("#displayDemonym");
+var inputCountryFlag = document.querySelector("#displayFlag");
 
 function displayCountryCard() {
   countryCardContainer.style.display = "block";
@@ -101,7 +107,6 @@ var buttonClickHandler = function (event) {
 
   if (countryInput) {
     getInputCountry(countryInput);
-    // inputCardContainer.textContent = "";
 
     searchInput.value = "";
   } else {
@@ -119,9 +124,22 @@ var getInputCountry = function (countryInput) {
     .then(function (data) {
       for (let i = 0; i < data.length; i++) {}
       search = data;
+      console.log(search);
       displayCountryCard();
+      displayInputCountryInfo();
     });
 };
+
+function displayInputCountryInfo() {
+  for (let i = 0; i < search.length; i++) {
+    inputCountryFlag.setAttribute("src", search[i].flags.svg);
+    inputCountryTitle.textContent = search[i].name;
+    inputCountryCapital.textContent = "Capital: " + search[i].capital;
+    inputCountrySubregion.textContent = "Subregion: " + search[i].subregion;
+    inputCountryPopulation.textContent = "Population: " + search[i].population;
+    inputCountryDemonym.textContent = "Demonym: " + search[i].demonym;
+  }
+}
 
 userFormEl.addEventListener("submit", formSubmitHandler);
 searchButton.addEventListener("click", buttonClickHandler);
