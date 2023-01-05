@@ -123,7 +123,7 @@ var getInputCountry = function (countryInput) {
     })
     .then(function (data) {
       for (let i = 0; i < data.length; i++) {}
-      search = data;
+      search = data[0];
       console.log(search);
       displayCountryCard();
       displayInputCountryInfo();
@@ -131,15 +131,13 @@ var getInputCountry = function (countryInput) {
 };
 
 function displayInputCountryInfo() {
-  for (let i = 0; i < search.length; i++) {
-    inputCountryFlag.setAttribute("src", search[i].flags.svg);
-    inputCountryTitle.textContent = search[i].name;
-    inputCountryCapital.textContent = "Capital: " + search[i].capital;
-    inputCountrySubregion.textContent = "Subregion: " + search[i].subregion;
-    inputCountryPopulation.textContent =
-      "Population: " + search[i].population.toLocaleString();
-    inputCountryDemonym.textContent = "Demonym: " + search[i].demonym;
-  }
+  inputCountryFlag.setAttribute("src", search.flags.svg);
+  inputCountryTitle.textContent = search.name;
+  inputCountryCapital.textContent = "Capital: " + search.capital;
+  inputCountrySubregion.textContent = "Subregion: " + search.subregion;
+  inputCountryPopulation.textContent =
+    "Population: " + search.population.toLocaleString();
+  inputCountryDemonym.textContent = "Demonym: " + search.demonym;
 }
 
 userFormEl.addEventListener("submit", formSubmitHandler);
