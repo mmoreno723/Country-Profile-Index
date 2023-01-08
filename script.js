@@ -10,6 +10,7 @@ var inputCountryPopulation = document.querySelector("#displayPop");
 var inputCountrySubregion = document.querySelector("#displaySubregion");
 var inputCountryDemonym = document.querySelector("#displayDemonym");
 var inputCountryFlag = document.querySelector("#displayFlag");
+var countryCard = document.querySelector(".card");
 
 function displayCountryCard() {
   countryCardContainer.style.display = "block";
@@ -27,11 +28,13 @@ for (j = 0; j < closeBtn.length; j++) {
 function darkMode() {
   var element = document.body;
   element.className = "dark-mode";
+  countryCardContainer.style.backgroundColor = "#202124";
 }
 
 function lightMode() {
   var element = document.body;
   element.className = "light-mode";
+  countryCardContainer.style.backgroundColor = "white";
 }
 
 // SCROLL TO TOP //
@@ -76,7 +79,7 @@ function renderAllCountriestoPage() {
   for (let i = 0; i < allCountries.length; i++) {
     var card = document.createElement("div");
     card.setAttribute("class", "card");
-    card.setAttribute("onclick", "location.href='#'");
+    card.setAttribute("onclick", "clickACountry()");
     var title = document.createElement("p");
     title.setAttribute("id", "cardTitle");
     title.textContent = allCountries[i].name;
@@ -139,6 +142,31 @@ function displayInputCountryInfo() {
     "Population: " + search.population.toLocaleString();
   inputCountryDemonym.textContent = "Demonym: " + search.demonym;
 }
+
+// var countryCardName = document.getElementById("cardTitle");
+
+function clickACountry() {
+  var childCard = $("div#container").children();
+  var findChild = childCard.find("p");
+
+  for (let i = 0; i < findChild.length; i++) {
+    var childName = findChild[i].textContent;
+    console.log(childName);
+  }
+  // console.log(findChild);
+  // var mainInfo = $("div.card").find("p");
+  // // console.log(mainInfo);
+
+  // for (let i = 0; i < mainInfo.length; i++) {
+  //   dataName = mainInfo[i];
+  //   console.log(dataName);
+  // }
+}
+
+// $(".card").click(function () {
+//   // var titleText = $(this).parents("p#cardTitle").text();
+//   alert("wowwww");
+// });
 
 userFormEl.addEventListener("submit", formSubmitHandler);
 searchButton.addEventListener("click", buttonClickHandler);
